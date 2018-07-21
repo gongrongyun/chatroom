@@ -4,7 +4,7 @@ $(document).ready(function(){
             type:"POST",
             url:"#",
             data:{
-                name:SESSION['name'],
+                name:$_SESSION['name'],
                 content:$("#").val(),
                 status: 0,
             },
@@ -23,10 +23,11 @@ $(document).ready(function(){
             data:{
                 name:"",
                 content:"",
+                datatime:"",
             },
             dataType:"json",
             success:function(data){
-                if(data.name == SESSION['name']){
+                if(data.name == $_SESSION['name']){
                     $("#room").append("<span class='class2'>"+ data.content +"</span>"+":"+data.name);
                 }
                 else{
@@ -41,5 +42,4 @@ $(document).ready(function(){
             }
         });
     },500);
-    
 })

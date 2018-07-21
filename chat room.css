@@ -1,10 +1,12 @@
 .class1{
     max-width:200px;
     float:left;
+    background-color: blue;
 }
 .class2{
     max-width:200px;
     float:right;
+    background-color: blue;
 }
 .class3{
     margin:auto;
