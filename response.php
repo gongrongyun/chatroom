@@ -17,7 +17,6 @@
           "name"=>$value['name'],
           "concent"=>$value['content'],
           "time"=>$value['time'],
-          // "id"=>$value['id'],
         ];
       }
       $last_id+=$i;
