@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>注册</title>
+        <style media="screen">
+            .register {
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            function register_function() {
+                $.ajax({
+                    type: "POST",
+                    url: "registerphp.php",
+                    data: {
+                        name: $("#name").val(),
+                        psw: $("#psw").val(),
+                        psw_confirm: $("#psw_confirm").val(),
+                    },
+                    dataType:"text",
+                    success:function(data) {
+                        alert(data);
+                    },
+                    error:function(jqXHR){
+                        alert("error"+jqXHR.status);
+                    },
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="register">
+            <h2>用户注册</h2>
+            <input type="text" name="" placeholder="请输入用户名" id="name" class="name" value="">
+            <br>
+            <input type="text" name="" placeholder="请输入密码" id="psw" class="psw" value="">
+            <br>
+            <input type="text" name="" placeholder="请再次确认密码" id="psw_confirm" class="psw_confirm" value="">
+            <br>
+            <button type="button" name="button" onclick="register_function()">注册</button>
+        </div>
+    </body>
+</html>

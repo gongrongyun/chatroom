@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>登录</title>
+        <style media="screen">
+            .login {
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            function login_function() {
+                $.ajax({
+                    type: "POST",
+                    url: "loginphp.php",
+                    data: {
+                        name: $("name").val(),
+                        password: $("password").val(),
+                    },
+                    dataType:"text",
+                    success:function(data) {
+                        alert("yes");
+                    },
+                    error:function(jqXHR){
+                        alert("error"+jqXHR.status);
+                    },
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="login">
+            <h2>欢迎来到聊天室</h2>
+            <input type="text" name="" placeholder="请输入用户名" id="name" value="">
+            <br>
+            <input type="text" name="" placeholder="请输入密码" id="password" value="">
+            <br>
+            <button type="button" name="button" onclick="login_function()">登录</button>
+            <br>
+            <a href="#">还没有账号？立即注册</a>
+        </div>
+    </body>
+</html>
