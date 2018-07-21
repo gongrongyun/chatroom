@@ -1,0 +1,20 @@
+.class1{
+    max-width:200px;
+    float:left;
+}
+.class2{
+    max-width:200px;
+    float:right;
+}
+.class3{
+    margin:auto;
+    background-color: grey;
+}
+.input_class{
+    width:340px;
+}
+.room_class{
+    width:400px;
+    height:400px;
+    background-color: lightblue;
+}

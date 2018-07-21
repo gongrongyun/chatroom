@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>chat room</title>
+        <link rel="Stylesheet" href="chat room.css" type="text/css">
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="chat room.js"></script>
     </head>
     <body>
         <div id="room" class="room_class"></div>
@@ -9,25 +12,7 @@
             <input type="text" id="input" class="input_class">
             <input type="button" id="save" value="发送">
         </div>
-        <style>
-            .class1{
-                max-width:200px;
-                float:left;
-            }
-            .class2{
-                max-width:200px;
-                float:right;
-            }
-            .input_class{
-                width:340px;
-            }
-            .room_class{
-                width:400px;
-                height:400px;
-                background-color: lightblue;
-            }
-        </style>
-        <script src="jquery-3.3.1.min.js"></script>
+
         <script>
             $(document).ready(function(){
                 $("#save").click(function(){
@@ -63,12 +48,16 @@
                             else{
                                 $("#room").append("<span class='class1'>"+ data.content +"</span>"+":"+data.name);
                             }
+                            setInterval(function(){
+                                $("#room").append("<span class='class3'>"+data.datetime+"<span>")
+                            },10*60*1000);
                         },
                         error:function(jqXHR){
                             console.log("error:" + jqXHR.status);
                         }
                     });
                 },500);
+                
             })
         </script>
     </body>
