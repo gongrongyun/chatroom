@@ -2,11 +2,10 @@ $(document).ready(function(){
     $("#save").click(function(){
         $.ajax({
             type:"POST",
-            url:"#",
+            url:"conn_chatroom.php",
             data:{
-                name:SESSION['name'],
-                content:$("#").val(),
-                status: 0,
+                name:$_SESSION['name'],
+                content:$("#input").val(),
             },
             dataType:"json",
             success:function(){
@@ -19,18 +18,19 @@ $(document).ready(function(){
     setInterval(function(){
         $.ajax({
             type:"GET",
-            url:"",
+            url:"response.php",
             data:{
                 name:"",
                 content:"",
+                datatime:"",
             },
             dataType:"json",
             success:function(data){
-                if(data.name == SESSION['name']){
-                    $("#room").append("<span class='class2'>"+ data.content +"</span>"+":"+data.name);
+                if(data.name === document.getElementById("session_name").value){
+                    $("#room").append("<span class='class2'>"+ data.content +":"+data.name+"</span>");
                 }
                 else{
-                    $("#room").append("<span class='class1'>"+ data.content +"</span>"+":"+data.name);
+                    $("#room").append("<span class='class1'>"+ data.name+":"+data.content +"</span>");
                 }
                 setInterval(function(){
                     $("#room").append("<span class='class3'>"+data.datetime+"<span>")
@@ -41,5 +41,18 @@ $(document).ready(function(){
             }
         });
     },500);
-    
+    $.ajax({
+        type:"GET",
+        url:"loginphp.php",
+        data:{
+            session_name:"",
+        },
+        datatype:"json",
+        success:function(data){
+            $("#session_name").val() = data.name;
+        },
+        error:function(jqXHR){
+            console.log("error：" + jqXHR.status);
+        }
+    })
 })

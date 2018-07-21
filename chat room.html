@@ -7,58 +7,20 @@
         <script src="chat room.js"></script>
     </head>
     <body>
+        <h1 class="room_p">在这里尽情地聊天吧</h1>
         <div id="room" class="room_class"></div>
-        <div style="background-color: lightblue;width:400px;">
+        <div class="room2">
             <input type="text" id="input" class="input_class">
             <input type="button" id="save" value="发送">
         </div>
-
-        <script>
-            $(document).ready(function(){
-                $("#save").click(function(){
-                    $.ajax({
-                        type:"POST",
-                        url:"#",
-                        data:{
-                            name:SESSION['name'],
-                            content:$("#").val(),
-                            status: 0,
-                        },
-                        dataType:"json",
-                        success:function(){
-                        },
-                        error:function(jqXHR){
-                            console.log("error:" + jqXHR.status);
-                        }
-                    });
-                })
-                setInterval(function(){
-                    $.ajax({
-                        type:"GET",
-                        url:"",
-                        data:{
-                            name:"",
-                            content:"",
-                        },
-                        dataType:"json",
-                        success:function(data){
-                            if(data.name == SESSION['name']){
-                                $("#room").append("<span class='class2'>"+ data.content +"</span>"+":"+data.name);
-                            }
-                            else{
-                                $("#room").append("<span class='class1'>"+ data.content +"</span>"+":"+data.name);
-                            }
-                            setInterval(function(){
-                                $("#room").append("<span class='class3'>"+data.datetime+"<span>")
-                            },10*60*1000);
-                        },
-                        error:function(jqXHR){
-                            console.log("error:" + jqXHR.status);
-                        }
-                    });
-                },500);
-                
-            })
-        </script>
+        <div class="room_buble">
+            气泡颜色:<input id="buble" type="text" placeholder="red"><br/>
+            <form action="" method="post">
+            背景图片: 
+            <input id="bgpic" type="file"><br/>
+            <input type="submit" name="submit" value="确定"/>
+            </form>
+        </div>
+        <input type="text" id="session_name">
     </body>
 </html>
