@@ -1,15 +1,15 @@
 <?php
+
 session_start();
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 
-    $name=$_POST['name'];
-    $psw=$_POST['psw'];
+$name=$_POST['name'];
+$psw=$_POST['psw'];
 
-    $data=0;
-
+$data=0;
 
 if ($name == "" || $psw == "") {
     $data="请确认信息完整性";
@@ -28,11 +28,16 @@ else {
                 $_SESSION['name']=$name;
             }
             else {
-                $data="用户名不存在";
+                $data="密码错误";
             }
-        } catch (PDOException $e) {
-            $data="数据库连接失败".$e->getMessage();
         }
+        else {
+            $data="用户名不存在";
+        }
+    } catch (PDOException $e) {
+        $data="数据库连接失败".$e->getMessage();
     }
-    echo $data;
+
+}
+echo $data;
  ?>
