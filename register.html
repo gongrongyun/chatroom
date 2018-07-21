@@ -21,7 +21,18 @@
                     },
                     dataType:"text",
                     success:function(data) {
-                        alert(data);
+                        if (data=="注册成功") {
+                            alert("注册成功，将返回登录页面");
+                            window.location.href='./login.html';
+                        }
+                        else {
+                            var div = document.createElement("div");
+                            div.className = '';
+                            var element=document.getElementById("judge");
+                            element.innerHTML = "";
+                            div.innerHTML = data;
+                            element.appendChild(div);
+                        }
                     },
                     error:function(jqXHR){
                         alert("error"+jqXHR.status);
@@ -35,11 +46,16 @@
             <h2>用户注册</h2>
             <input type="text" name="" placeholder="请输入用户名" id="name" class="name" value="">
             <br>
-            <input type="text" name="" placeholder="请输入密码" id="psw" class="psw" value="">
+            <input type="password" name="" placeholder="请输入密码" id="psw" class="psw" value="">
             <br>
-            <input type="text" name="" placeholder="请再次确认密码" id="psw_confirm" class="psw_confirm" value="">
+            <input type="password" name="" placeholder="请再次确认密码" id="psw_confirm" class="psw_confirm" value="">
             <br>
+            <div class="judge" id="judge">
+
+            </div>
             <button type="button" name="button" onclick="register_function()">注册</button>
+            <br>
+            <a href="./login.html">返回登录页面</a>
         </div>
     </body>
 </html>
