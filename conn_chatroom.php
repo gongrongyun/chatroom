@@ -7,14 +7,14 @@ try{
     echo $sql . "<br>" . $e->getMessage();
 }
 // 存入聊天数据
-if(isset($_POST['name'])&&isset($_POST['content'])){
-  $name=$_POST['name'];
-  $content=$_POST['content'];
-  $status=$_POST['status'];
-  $insert = $con->prepare('INSERT INTO chat_room_table (name,connent,status)VALUES(:name,:connent,:status)');
+if(isset($_POST['name'])&&isset($_POST['content'])&&isset($_POST['time'])){
+  $name = $_POST['name'];
+  $content = $_POST['content'];
+  $time = $_POST['time'];
+  $insert = $con->prepare('INSERT INTO chat_room_table (name,content,time)VALUES(:name,:content,:time)');
         $insert -> bindValue(':name',$name);
-        $insert -> bindValue(':connent',$connent);
-        $insert -> bindValue(':status'$status,);
+        $insert -> bindValue(':content',$content);
+        $insert -> bindValue(':time',$time);
         $insert -> execute();
   // $message=array();
   // $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

@@ -1,50 +1,52 @@
 $(document).ready(function(){
 
-    // $("#save").click(function(){
-    //     $.ajax({
-    //         type:"POST",
-    //         url:"conn_chatroom.php",
-    //         data:{
-    //             name:$_SESSION['name'],
-    //             content:$("#input").val(),
-    //         },
-    //         dataType:"json",
-    //         success:function(){
-    //         },
-    //         error:function(jqXHR){
-    //             console.log("error:" + jqXHR.status);
-    //         },
-    //     });
-    // });
+    $("#save").click(function(){
+        var mydate = new Date();
+        $.ajax({
+            type:"POST",
+            url:"conn_chatroom.php",
+            data:{
+                name:$_SESSION['name'],//用户名这里还没解决
+                content:$("#input").val(),
+                data:mydate.toLocaleTimeString(),
+            },
+            dataType:"json",
+            success:function(){
+            },
+            error:function(jqXHR){
+                console.log("error:" + jqXHR.status);
+            },
+        });
+    });
 
-    // setInterval(function(){
-    //     $.ajax({
-    //         type:"GET",
-    //         url:"response.php",
-    //         data:{
-    //             name:"",
-    //             content:"",
-    //             time:"",
-    //         },
-    //         dataType:"json",
-    //         success:function(data){
-    //             for(var i = 0; i < data.length; i++){
-    //             if(data[i].name === document.getElementById("session_name").value){
-    //                 $("#room").append("<span class='class2'>"+ data[i].content +":"+data[i].name+"</span>");
-    //             }
-    //             else{
-    //                 $("#room").append("<span class='class1'>"+ data[i].name+":"+data[i].content +"</span>");
-    //             }
-    //         }
-    //             setInterval(function(){
-    //                 $("#room").append("<span class='class3'>"+data[0].time+"<span>")
-    //             },10*60*1000);
-    //         },
-    //         error:function(jqXHR){
-    //             console.log("error:" + jqXHR.status);
-    //         },
-    //     });
-    // },500);
+    setInterval(function(){
+        $.ajax({
+            type:"GET",
+            url:"response.php",
+            data:{
+                name:"",
+                content:"",
+                time:"",//id还没解决
+            },
+            dataType:"json",
+            success:function(data){
+                for(var i = 0; i < data.length; i++){
+                if(data[i].name === document.getElementById("session_name").value){
+                    $("#room").append("<span class='class2'>"+ data[i].content +":"+data[i].name+"</span>");
+                }
+                else{
+                    $("#room").append("<span class='class1'>"+ data[i].name+":"+data[i].content +"</span>");
+                }
+            }
+                setInterval(function(){
+                    $("#room").append("<span class='class3'>"+data[0].time+"<span>")
+                },10*60*1000);
+            },
+            error:function(jqXHR){
+                console.log("error:" + jqXHR.status);
+            },
+        });
+    },500);
 
     // $.ajax({
     //     type:"GET",
@@ -62,7 +64,7 @@ $(document).ready(function(){
     //     },
     // });
 
-    $("#submit").click(function(){
+    $("#submit").click(function(){//背景图还没有解决
         var formData = new FormData();
         formdata.append("name",document.getElementById("bgpic").files[0]);
         $.ajax({
