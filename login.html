@@ -15,12 +15,23 @@
                     type: "POST",
                     url: "loginphp.php",
                     data: {
-                        name: $("name").val(),
-                        password: $("password").val(),
+                        name: $("#name").val(),
+                        psw: $("#psw").val(),
                     },
                     dataType:"text",
                     success:function(data) {
-                        alert("yes");
+                        if (data=="登录成功") {
+                            alert("登录成功，将进入聊天室");
+                            window.location.href='./chat room.html';
+                        }
+                        else {
+                            var div = document.createElement("div");
+                            div.className = '';
+                            var element=document.getElementById("judge");
+                            element.innerHTML = "";
+                            div.innerHTML = data;
+                            element.appendChild(div);
+                        }
                     },
                     error:function(jqXHR){
                         alert("error"+jqXHR.status);
@@ -34,11 +45,14 @@
             <h2>欢迎来到聊天室</h2>
             <input type="text" name="" placeholder="请输入用户名" id="name" value="">
             <br>
-            <input type="text" name="" placeholder="请输入密码" id="password" value="">
+            <input type="password" name="" placeholder="请输入密码" id="psw" value="">
             <br>
+            <div class="judge" id="judge">
+
+            </div>
             <button type="button" name="button" onclick="login_function()">登录</button>
             <br>
-            <a href="#">还没有账号？立即注册</a>
+            <a href="./register.html">还没有账号？立即注册</a>
         </div>
     </body>
 </html>
