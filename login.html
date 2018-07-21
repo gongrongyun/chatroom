@@ -21,6 +21,7 @@
                     dataType:"text",
                     success:function(data) {
                         if (data=="登录成功") {
+                            document.cookie="name=" + document.getElementById("name").value;
                             alert("登录成功，将进入聊天室");
                             window.location.href='./chat room.html';
                         }
