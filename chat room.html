@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>chat room</title>
+    </head>
+    <body>
+        <div id="room" class="room_class"></div>
+        <div style="background-color: lightblue;width:400px;">
+            <input type="text" id="input" class="input_class">
+            <input type="button" id="save" value="发送">
+        </div>
+        <style>
+            .class1{
+                max-width:200px;
+                float:left;
+            }
+            .class2{
+                max-width:200px;
+                float:right;
+            }
+            .input_class{
+                width:340px;
+            }
+            .room_class{
+                width:400px;
+                height:400px;
+                background-color: lightblue;
+            }
+        </style>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#save").click(function(){
+                    $.ajax({
+                        type:"POST",
+                        url:"#",
+                        data:{
+                            name:SESSION['name'],
+                            content:$("#").val(),
+                            status: 0,
+                        },
+                        dataType:"json",
+                        success:function(){
+                        },
+                        error:function(jqXHR){
+                            console.log("error:" + jqXHR.status);
+                        }
+                    });
+                })
+                setInterval(function(){
+                    $.ajax({
+                        type:"GET",
+                        url:"",
+                        data:{
+                            name:"",
+                            content:"",
+                        },
+                        dataType:"json",
+                        success:function(data){
+                            if(data.name == SESSION['name']){
+                                $("#room").append("<span class='class2'>"+ data.content +"</span>"+":"+data.name);
+                            }
+                            else{
+                                $("#room").append("<span class='class1'>"+ data.content +"</span>"+":"+data.name);
+                            }
+                        },
+                        error:function(jqXHR){
+                            console.log("error:" + jqXHR.status);
+                        }
+                    });
+                },500);
+            })
+        </script>
+    </body>
+</html>
