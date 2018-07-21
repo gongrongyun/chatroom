@@ -19,4 +19,22 @@
     width:400px;
     height:400px;
     background-color: lightblue;
+    margin:auto;
+    overflow:scroll;
+}
+.room_class::-webkit-scrollbar{
+    display:none;
+}
+.room2{
+    background-color: lightblue;
+    width:400px;
+    margin:auto;
+}
+.room_p{
+    text-align:center;
+    border:2px solid black;
+}
+.room_buble{
+    text-align:center;
+    margin-top:50px;
 }
