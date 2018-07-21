@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>chat room</title>
+        <meta charset="utf-8">
         <link rel="Stylesheet" href="chat room.css" type="text/css">
-        <script src="jquery-3.3.1.min.js"></script>
-        <script src="chat room.js"></script>
+
     </head>
     <body>
         <h1 class="room_p">在这里尽情地聊天吧</h1>
@@ -15,12 +15,14 @@
         </div>
         <div class="room_buble">
             气泡颜色:<input id="buble" type="text" placeholder="red"><br/>
-            <form action="" method="post">
             背景图片: 
-            <input id="bgpic" type="file"><br/>
-            <input type="submit" name="submit" value="确定"/>
+            <form enctype="multipart/form-data" id="picture_form">
+            <input id="bgpic" name="file" type="file"><br/>
+            <input type="submit" id="submit" value="确定"/>
             </form>
         </div>
-        <input type="text" id="session_name">
+        <input type="hidden" id="session_name">
     </body>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="chat room.js"></script>
 </html>
