@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -22,6 +25,7 @@ else {
         if ($result) {
             if ($psw==$result['password']) {
                 $data="登录成功";
+                $_SESSION['name']=$name;
             }
             else {
                 $data="密码错误";
