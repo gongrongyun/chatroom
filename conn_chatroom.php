@@ -12,7 +12,12 @@
     // if(isset($_POST["name"])&&isset($_POST["content"])&&isset($_POST["time"])){
     $name = $_POST["name"];
     $content = $_POST["content"];
-    if(){
+    $sql = "SELECT * FROM user_infor_table WHERE name = '$name'";
+    $result = $conn -> prepare($sql);
+    $result -> execute();
+    $row = $result->fetch();
+    // var_dump($row);调试
+    if($row){
         $insert = $conn->prepare("INSERT INTO chat_room_table (name,content,time)VALUES(:name,:content,NOW())");
                 $insert -> bindValue(":name",$name);
                 $insert -> bindValue(":content",$content);
@@ -28,5 +33,8 @@
         // else {
         //     echo "fcdcw";
         // }
+    }
+    else {
+        echo "请你不要皮";
     }
 ?>
