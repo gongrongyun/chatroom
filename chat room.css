@@ -1,12 +1,22 @@
 .class1{
     max-width:200px;
     float:left;
-    background-color: blue;
+    background-color: lightgreen;
+    margin:10px;
+    height:30px;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
 }
 .class2{
     max-width:200px;
     float:right;
-    background-color: blue;
+    background-color: lightgreen;
+    margin:10px;
+    height:30px;
+    padding-top:10px;;
+    padding-left:10px;
+    padding-right:10px;
 }
 .class3{
     margin:auto;
@@ -21,6 +31,7 @@
     background-color: lightblue;
     margin:auto;
     overflow:scroll;
+    display:block;
 }
 .room_class::-webkit-scrollbar{
     display:none;

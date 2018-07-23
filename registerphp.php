@@ -33,7 +33,7 @@ else {
                 {
                     try {
                         $pdo = new PDO("mysql:host=$servername;dbname=chat_room",$username,$password);
-                        $sql = "INSERT INTO USER_INFOR_TABLE (name,password)
+                        $sql = "INSERT INTO USER_INFOR_TABLE (name,pwd)
                         VALUES ('$name','$psw')";
                         $pdo->exec($sql);
                         $data="注册成功";
