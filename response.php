@@ -15,7 +15,7 @@
       foreach ($row as $value) {
         $arr[$i++]=[
           "name"=>$value['name'],
-          "concent"=>$value['content'],
+          "content"=>$value['content'],
           "time"=>$value['time'],
         ];
       }
