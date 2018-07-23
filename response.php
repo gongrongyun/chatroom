@@ -14,10 +14,10 @@
       $i=0;
       foreach ($row as $value) {
         $arr[$i++]=[
-          "name"=>$value['name'],
-          "concent"=>$value['content'],
-          "time"=>$value['time'],
-          "last_id"=>$value['id'],
+          "name" => $value['name'],
+          "concent" => $value['content'],
+          "time" => $value['time'],
+          "last_id" => $value['id'],
         ];
       }
       $last_id += $i;

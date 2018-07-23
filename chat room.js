@@ -40,15 +40,15 @@ $(document).ready(function(){
             success:function(data){
                 for(var i = 0; i < data.length; i++){
                 if(data[i].name === username){
-                    $("#room").append("<span class='class2'>"+ data[i].content +":"+data[i].name+"</span>");
+                    $("#room").append("<div class='class2'>"+ data[i].content +":"+data[i].name+"</div>" + "<br/>");
                 }
                 else{
-                    $("#room").append("<span class='class1'>"+ data[i].name+":"+data[i].content +"</span>");
+                    $("#room").append("<div class='class1'>"+ data[i].name+":"+data[i].content +"</div>" + "<br/>");
                 }
                 id = data[data.length-1].id;
             }
                 setInterval(function(){
-                    $("#room").append("<span class='class3'>"+data[0].time+"<span>")
+                    $("#room").append("<div class='class3'>"+data[0].time+"</div>" + "<br/>")
                 },10*60*1000);
             },
             error:function(jqXHR){
@@ -92,6 +92,8 @@ $(document).ready(function(){
             },
         });
     });
-
-    $(".class2").css("background-color",$("#buble").val());
+    $("#color").click(function(){
+         $(".class2").css("background-color",$("#buble").val());
+    })
+   
 });
