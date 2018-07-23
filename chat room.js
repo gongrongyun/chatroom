@@ -129,5 +129,5 @@ $(document).ready(function(){
     $("#color").click(function(){
          $(".class2").css("background-color",$("#buble").val());
     })
-   
+
 });

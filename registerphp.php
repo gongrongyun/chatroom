@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -37,6 +40,7 @@ else {
                         VALUES ('$name','$psw')";
                         $pdo->exec($sql);
                         $data="注册成功";
+                        $_SESSION['name']=$name;
                     }
                     catch(PDOException $e) {
                         $data="1#数据库连接失败".$e->getMessage();
