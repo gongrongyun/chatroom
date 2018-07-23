@@ -22,8 +22,15 @@
                     dataType:"text",
                     success:function(data) {
                         if (data=="注册成功") {
-                            alert("注册成功，将返回登录页面");
-                            window.location.href='./login.html';
+                            document.cookie="name=" + document.getElementById("name").value;
+                            var div = document.createElement("div");
+                            div.className = '';
+                            var element=document.getElementById("judge");
+                            element.innerHTML = "";
+                            div.innerHTML = "注册成功，2秒后将以当前账号进入聊天室";
+                            element.appendChild(div);
+                            setTimeout("location.href='./chat room.html'",2000);
+                            // window.location.href='./login.html';
                         }
                         else {
                             var div = document.createElement("div");
