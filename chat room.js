@@ -39,17 +39,18 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 for(var i = 0; i < data.length; i++){
-                if(data[i].name === username){
-                    $("#room").append("<div class='class2'>"+ data[i].content +":"+data[i].name+"</div>" + "<br/>");
+                    if(data[i].name === username){
+                        $("#room").append("<div class='class2'>" + data[i].content + "</div>");
+                    }
+                    else{
+                        $("#room").append("<div class='class1'>" + data[i].name + ":" + data[i].content + "</div>" + "<br/>");
+                    }
+                    id = data[data.length-1].last_id;
                 }
-                else{
-                    $("#room").append("<div class='class1'>"+ data[i].name+":"+data[i].content +"</div>" + "<br/>");
-                }
-                id = data[data.length-1].id;
-            }
-                setInterval(function(){
-                    $("#room").append("<div class='class3'>"+data[0].time+"</div>" + "<br/>")
-                },10*60*1000);
+                // setInterval(function(){
+                //     $("#room").append("<div class='class3'>"+data[0].time+"</div>" + "<br/>")
+                // },10*60*1000);
+                
             },
             error:function(jqXHR){
                 console.log("error:" + jqXHR.status);
