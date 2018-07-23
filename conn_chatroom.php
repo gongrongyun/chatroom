@@ -12,11 +12,10 @@
     // if(isset($_POST["name"])&&isset($_POST["content"])&&isset($_POST["time"])){
     $name = $_POST["name"];
     $content = $_POST["content"];
-    $time = $_POST["time"];
-    $insert = $conn->prepare("INSERT INTO chat_room_table (name,content,time)VALUES(:name,:content,:time)");
+    // $time = $_POST["time"];
+    $insert = $conn->prepare("INSERT INTO chat_room_table (name,content,time)VALUES(:name,:content,NOW())");
             $insert -> bindValue(":name",$name);
             $insert -> bindValue(":content",$content);
-            $insert -> bindValue(":time",$time);
             $insert -> execute();
     // $message=array();
     // $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
