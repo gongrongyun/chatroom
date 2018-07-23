@@ -1,4 +1,13 @@
 $(document).ready(function(){
+
+    function htmlspecialchars(str){            
+        str = str.replace(/&/g, '&amp;');  
+        str = str.replace(/</g, '&lt;');  
+        str = str.replace(/>/g, '&gt;');  
+        str = str.replace(/"/g, '&quot;');  
+        str = str.replace(/'/g, '&#039;');  
+        return str;  
+    }
     var cookie_name = "name" + "=";
     var ca = document.cookie.split(";");
     for(var i = 0; i < ca.length; i++){
@@ -10,10 +19,19 @@ $(document).ready(function(){
             var username = undefined;
         }
     }
-    console.log(username);
+
+    $(document).keydown(function(event){
+        if(event.keyCode == 13){
+            $("#save").click();
+        }
+    })
+    
     $("#save").click(function(){
         if(!username){
             alert("请先登录");
+        }
+        else if(!$("#input").val()){
+            alert("聊天信息不能为空");
         }
         else {
             var mydate = new Date();
@@ -33,7 +51,6 @@ $(document).ready(function(){
                 }
             });
         }
-        var scrollDiv = $("#room");
         
         $("#input").val("");
         $("#input").focus();
@@ -53,10 +70,10 @@ $(document).ready(function(){
             success:function(data){
                 for(var i = 0; i < data.length; i++){
                     if(data[i].name === username){
-                        $("#room").append("<div class='class2'>" + data[i].content + "</div>");
+                        $("#room").append("<div class='class2'>" + htmlspecialchars(data[i].content) + "</div>");
                     }
                     else{
-                        $("#room").append("<div class='class1'>" + data[i].name + ":" + data[i].content + "</div>" + "<br/>");
+                        $("#room").append("<div class='class1'>" + data[i].name + ":" + htmlspecialchars(data[i].content) + "</div>" + "<br/>");
                     }
                     id = data[data.length-1].last_id;
                     var scrollDiv = $("#room");
@@ -72,6 +89,7 @@ $(document).ready(function(){
             },
         });
     },500);
+
 
     // $.ajax({
     //     type:"GET",
