@@ -1,4 +1,5 @@
 .class1{
+    max-width:200px;
     width:200px;
     float:left;
     background-color: lightgreen;
@@ -10,11 +11,13 @@
     text-align:left;
 }
 .class2{
+    max-width:200px;
     width:200px;
     float:right;
     background-color: lightgreen;
     margin:10px;
     min-height:30px;
+    /* padding:10px; */
     padding-top:10px;;
     padding-left:10px;
     padding-right:10px;

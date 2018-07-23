@@ -13,6 +13,7 @@
     if ($result -> execute()) {
       $row=$result->fetchAll(PDO::FETCH_ASSOC);
       $i=0;
+      $arr = [];
       foreach ($row as $value) {
         $arr[$i++]=[
           "name" => $value['name'],

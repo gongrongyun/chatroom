@@ -1,5 +1,15 @@
 $(document).ready(function(){
-    var username = document.cookie.split(";")[0].split("=")[1];
+    var cookie_name = "name" + "=";
+    var ca = document.cookie.split(";");
+    for(var i = 0; i < ca.length; i++){
+        var c = ca[i].trim();
+        if(c.indexOf(cookie_name) == 0){
+            var username = c.substring(cookie_name.length,c.length);
+        }
+        else {
+            var username = undefined;
+        }
+    }
     console.log(username);
     $("#save").click(function(){
         if(!username){
@@ -17,13 +27,16 @@ $(document).ready(function(){
                 },
                 dataType:"text",
                 success:function(){
-                    console.log("相信你自己 没有bug");
                 },
                 error:function(jqXHR){
                     console.log("error:" + jqXHR.status);
                 }
             });
         }
+        var scrollDiv = $("#room");
+        
+        $("#input").val("");
+        $("#input").focus();
     })
     var id = 0;
     setInterval(function(){
@@ -46,6 +59,8 @@ $(document).ready(function(){
                         $("#room").append("<div class='class1'>" + data[i].name + ":" + data[i].content + "</div>" + "<br/>");
                     }
                     id = data[data.length-1].last_id;
+                    var scrollDiv = $("#room");
+                    scrollDiv.scrollTop(scrollDiv[0].scrollHeight);
                 }
                 // setInterval(function(){
                 //     $("#room").append("<div class='class3'>"+data[0].time+"</div>" + "<br/>")
