@@ -23,7 +23,7 @@ else {
         $res->execute();
         $result=$res->fetch(PDO::FETCH_ASSOC);
         if ($result) {
-            if ($psw==$result['password']) {
+            if ($psw==$result['pwd']) {
                 $data="登录成功";
                 $_SESSION['name']=$name;
             }

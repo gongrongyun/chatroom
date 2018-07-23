@@ -1,12 +1,27 @@
 .class1{
     max-width:200px;
+    width:200px;
     float:left;
-    background-color: blue;
+    background-color: lightgreen;
+    margin:10px;
+    min-height:30px;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+    text-align:left;
 }
 .class2{
     max-width:200px;
+    width:200px;
     float:right;
-    background-color: blue;
+    background-color: lightgreen;
+    margin:10px;
+    min-height:30px;
+    /* padding:10px; */
+    padding-top:10px;;
+    padding-left:10px;
+    padding-right:10px;
+    text-align:right;
 }
 .class3{
     margin:auto;
@@ -20,7 +35,7 @@
     height:400px;
     background-color: lightblue;
     margin:auto;
-    overflow:scroll;
+    overflow:scroll;    
 }
 .room_class::-webkit-scrollbar{
     display:none;
@@ -38,3 +53,10 @@
     text-align:center;
     margin-top:50px;
 }
+/* .save{
+    border:0;
+    background-color:lightyellow;
+    width:50px;
+    height:15px;
+    letter-spacing:2px;
+} */
