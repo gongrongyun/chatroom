@@ -19,7 +19,7 @@
                         name: $("#name").val(),
                         psw: $("#psw").val(),
                     },
-                    dataType:"text",
+                    dataType:"json",
                     success:function(data) {
                         if (data=="登录成功") {
                             // if (cnt<0) {
@@ -33,7 +33,7 @@
                             //     element.innerHTML = "";
                             //     div.innerHTML = "登录成功，2秒后将进入聊天室";
                             //     element.appendChild(div);
-                            // cnt--;
+                            //     cnt--;
                             // }
                             document.cookie="name=" + document.getElementById("name").value;
                             var div = document.createElement("div");
@@ -44,17 +44,24 @@
                             element.appendChild(div);
                             setTimeout("location.href='./chat room.html'",1000);
                         }
-                        else {
-                            var div = document.createElement("div");
-                            div.className = '';
-                            var element=document.getElementById("judge");
-                            element.innerHTML = "";
-                            div.innerHTML = data;
-                            element.appendChild(div);
-                        }
+                        // else {
+                        //     var div = document.createElement("div");
+                        //     div.className = '';
+                        //     var element=document.getElementById("judge");
+                        //     element.innerHTML = "";
+                        //     div.innerHTML = data;
+                        //     element.appendChild(div);
+                        // }
                     },
                     error:function(jqXHR){
-                        alert("error"+jqXHR.status);
+                        // JSON.parse(jqXHR.responseTEXT);
+                        var div = document.createElement("div");
+                        div.className = '';
+                        var element=document.getElementById("judge");
+                        element.innerHTML = "";
+                        // div.innerHTML = jqXHR.status;
+                        div.innerHTML = jqXHR.responseJSON;
+                        element.appendChild(div);
                     },
                 });
                 // setTimeout("login_function()",1000);
