@@ -13,6 +13,8 @@ $data=0;
 
 if ($name == "" || $psw == "") {
     $data="请确认信息完整性";
+    header(http_response_code(401));
+    die(json_encode($data));
 }
 else {
     try {
@@ -29,13 +31,19 @@ else {
             }
             else {
                 $data="密码错误";
+                header(http_response_code(422));
+                die(json_encode($data));
             }
         }
         else {
             $data="用户名不存在";
+            header(http_response_code(422));
+            die(json_encode($data));
         }
     } catch (PDOException $e) {
         $data="数据库连接失败".$e->getMessage();
+        header(http_response_code(500));
+        die(json_encode($data));
     }
 
 }
