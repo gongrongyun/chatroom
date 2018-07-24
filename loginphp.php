@@ -9,7 +9,6 @@ $password = "";
 $name=$_POST['name'];
 $psw=$_POST['psw'];
 
-$data=0;
 
 if ($name == "" || $psw == "") {
     $data="请确认信息完整性";
@@ -25,8 +24,9 @@ else {
         $res->execute();
         $result=$res->fetch(PDO::FETCH_ASSOC);
         if ($result) {
-            if ($psw==$result['pwd']) {
-                $data="登录成功";
+            if ($psw===$result['pwd']) {
+                $data="登陆成功";
+                echo json_encode($data);
                 $_SESSION['name']=$name;
             }
             else {
@@ -47,5 +47,5 @@ else {
     }
 
 }
-echo $data;
+
  ?>

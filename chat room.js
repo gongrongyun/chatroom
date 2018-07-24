@@ -95,9 +95,9 @@ $(document).ready(function(){
                 
             },
             error:function(jqXHR){
-                alert(jqXHR.status + "登录超时");
-                header('Location:./login.html');
-                console.log("error:" + jqXHR.status);
+                // window.location.href="login.html";
+                console.log(jqXHR.status + "登录超时");
+                
             },
         });
     },500);
