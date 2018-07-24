@@ -1,29 +1,26 @@
 .class1{
     max-width:200px;
-    width:200px;
+    min-width:30px;
     float:left;
     background-color: lightgreen;
     margin:10px;
-    min-height:30px;
-    padding-top:10px;
-    padding-left:10px;
-    padding-right:10px;
-    text-align:left;
+    min-height:20px;
+    padding:10px;
+    text-align:right;
     word-break: break-all;
+    border-radius: 20px;
 }
 .class2{
     max-width:200px;
-    width:200px;
+    min-width:30px;
     float:right;
     background-color: lightgreen;
     margin:10px;
-    min-height:30px;
-    /* padding:10px; */
-    padding-top:10px;;
-    padding-left:10px;
-    padding-right:10px;
-    text-align:right;
+    min-height:20px;
+    padding:10px;
+    text-align:left;
     word-break: break-all;
+    border-radius: 20px;
 }
 .class3{
     margin:auto;
