@@ -9,6 +9,7 @@
     padding-left:10px;
     padding-right:10px;
     text-align:left;
+    word-break: break-all;
 }
 .class2{
     max-width:200px;
@@ -22,6 +23,7 @@
     padding-left:10px;
     padding-right:10px;
     text-align:right;
+    word-break: break-all;
 }
 .class3{
     margin:auto;

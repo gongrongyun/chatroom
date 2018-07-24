@@ -1,4 +1,5 @@
 <?php
+    session_start();
     //链接数据库
     $db_pass="";
     try{
@@ -12,12 +13,11 @@
     // if(isset($_POST["name"])&&isset($_POST["content"])&&isset($_POST["time"])){
     $name = $_POST["name"];
     $content = $_POST["content"];
-    $sql = "SELECT * FROM user_infor_table WHERE name = '$name'";
-    $result = $conn -> prepare($sql);
-    $result -> execute();
-    $row = $result->fetch();
-    // var_dump($row);调试
-    if($row){
+    $flag = 0;
+    if($name === $_SESSION['name']){
+        $flag = 1;
+    }
+    if($flag){
         $insert = $conn->prepare("INSERT INTO chat_room_table (name,content,time)VALUES(:name,:content,NOW())");
                 $insert -> bindValue(":name",$name);
                 $insert -> bindValue(":content",$content);

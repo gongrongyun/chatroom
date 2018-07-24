@@ -28,10 +28,10 @@ else {
             $data="用户名已存在";
         }
         else {
-            if ($result) {
-                $data="用户名已存在";
-            }
-            else {
+            // if ($result) {
+            //     $data="用户名已存在";
+            // }
+            // else {
                 if($psw_confirm == $psw)
                 {
                     try {
@@ -51,7 +51,7 @@ else {
                     $data="两次输入密码不一致";
                 }
             }
-        }
+        
     } catch (PDOException $e) {
         $data="2#数据库连接失败".$e->getMessage();
     }
