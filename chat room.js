@@ -66,6 +66,7 @@ $(document).ready(function(){
                 name:"",
                 content:"",
                 time:"",
+                user_name:username,
                 last_id:id,
             },
             dataType:"json",
@@ -87,6 +88,8 @@ $(document).ready(function(){
                 
             },
             error:function(jqXHR){
+                alert(jqXHR.status + "登录超时");
+                header('Location:./login.html');
                 console.log("error:" + jqXHR.status);
             },
         });
