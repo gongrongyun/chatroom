@@ -10,7 +10,7 @@
         </style>
         <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
-            var cnt=2;
+            // var cnt=2;
             function login_function() {
                 $.ajax({
                     type: "POST",
@@ -21,7 +21,7 @@
                     },
                     dataType:"json",
                     success:function(data) {
-                        if (data==="登陆成功") {
+                        // if (data=="登录成功") {
                             // if (cnt<0) {
                             //     document.cookie="name=" + document.getElementById("name").value;
                             //     window.location.href='./chat room.html';
@@ -43,7 +43,7 @@
                             div.innerHTML = "登录成功，1秒后进入聊天室";
                             element.appendChild(div);
                             setTimeout("location.href='./chat room.html'",1000);
-                        }
+                        // }
                         // else {
                         //     var div = document.createElement("div");
                         //     div.className = '';
@@ -60,7 +60,7 @@
                         var element=document.getElementById("judge");
                         element.innerHTML = "";
                         // div.innerHTML = jqXHR.status;
-                        div.innerHTML = jqXHR.responseJSON;
+                        div.innerHTML = jqXHR.responseJSON+"1";
                         element.appendChild(div);
                     },
                 });
