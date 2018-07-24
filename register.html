@@ -57,6 +57,7 @@
                             var element=document.getElementById("judge");
                             element.innerHTML = "";
                             // div.innerHTML = jqXHR.status;
+                            console.log(jqXHR.responseText);
                             div.innerHTML = jqXHR.responseJSON;
                             element.appendChild(div);
                         },

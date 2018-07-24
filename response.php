@@ -1,7 +1,7 @@
 <?php
     session_start();
     header("content-type:text/html;charset=utf-8");
-    if($_GET['user_name']=$_SESSION['name']){
+    if($_GET['user_name']===$_SESSION['name']){
       $db_pass="";
       try {
         $conn = new PDO('mysql:host=127.0.0.1;dbname=chat_room','root', $db_pass);

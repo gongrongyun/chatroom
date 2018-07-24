@@ -27,7 +27,7 @@ $(document).ready(function(){
             $("#save").click();
         }
     })
-    
+
     $("#save").click(function(){
         if(!username){
             alert("请先登录");
@@ -58,6 +58,13 @@ $(document).ready(function(){
         $("#input").focus();
     })
     var id = 0;
+    var bublecolor;
+    $("#color").click(function(){
+        bublecolor = $("#buble").val();
+        $(".class2").css("background-color",bublecolor);
+        console.log(bublecolor);
+    })
+
     setInterval(function(){
         $.ajax({
             type:"GET",
@@ -73,10 +80,10 @@ $(document).ready(function(){
             success:function(data){
                 for(var i = 0; i < data.length; i++){
                     if(data[i].name === username){
-                        $("#room").append("<div class='class2'>" + htmlspecialchars(data[i].content) + "</div>");
+                        $("#room").append("<div class='class2' style='background-color:" + bublecolor + "'>" + htmlspecialchars(data[i].content) + "</div>" + "<div style='clear:both'>"+"</div>");
                     }
                     else{
-                        $("#room").append("<div class='class1'>" + data[i].name + ":" + htmlspecialchars(data[i].content) + "</div>" + "<br/>");
+                        $("#room").append("<div class='class1'>" + data[i].name + ":" + htmlspecialchars(data[i].content) + "</div>" + "<br/>" + "</div>" + "<div style='clear:both'>"+"</div>");
                     }
                     id = data[data.length-1].last_id;
                     var scrollDiv = $("#room");
@@ -88,9 +95,9 @@ $(document).ready(function(){
                 
             },
             error:function(jqXHR){
-                alert(jqXHR.status + "登录超时");
-                header('Location:./login.html');
-                console.log("error:" + jqXHR.status);
+                // window.location.href="login.html";
+                console.log(jqXHR.status + "登录超时");
+                
             },
         });
     },500);
@@ -131,8 +138,6 @@ $(document).ready(function(){
     //         },
     //     });
     // });
-    $("#color").click(function(){
-         $(".class2").css("background-color",$("#buble").val());
-    })
+    
 
 });
