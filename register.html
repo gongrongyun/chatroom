@@ -10,7 +10,11 @@
         </style>
         <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
-            // $("")
+            $(document).keydown(function(event){
+                if (event.keyCode==13) {
+                    register_function();
+                }
+            });
             function register_function() {
                 if ($("#psw_confirm").val()!=$("#psw").val()) {
                     var div = document.createElement("div");
