@@ -1,3 +1,3 @@
 # chatroom
-this is a practice
+this is a chatroom
 i am back
