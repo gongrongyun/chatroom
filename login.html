@@ -11,6 +11,11 @@
         <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
             // var cnt=2;
+            $(document).keydown(function(event){
+                if (event.keyCode==13) {
+                    login_function();
+                }
+            });
             function login_function() {
                 $.ajax({
                     type: "POST",
@@ -78,7 +83,7 @@
             <div class="judge" id="judge">
 
             </div>
-            <button type="button" name="button" onclick="login_function()">登录</button>
+            <button type="button" name="button" id="btn" onclick="login_function()">登录</button>
             <br>
             <a href="./register.html">还没有账号？立即注册</a>
         </div>
